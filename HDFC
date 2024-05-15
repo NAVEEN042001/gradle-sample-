@@ -1,0 +1,573 @@
+pipeline 'HDFC-2', {
+  description = ''
+  disableMultipleActiveRuns = '0'
+  disableRestart = '0'
+  enabled = '1'
+  overrideWorkspace = '0'
+  pipelineRunNameTemplate = null
+  projectName = 'NS '
+  releaseName = null
+  skipStageMode = 'ENABLED'
+  templatePipelineName = null
+  templatePipelineProjectName = null
+  type = null
+  workspaceName = null
+
+  formalParameter 'ec_stagesToRun', defaultValue: null, {
+    expansionDeferred = '1'
+    label = null
+    orderIndex = null
+    required = '0'
+    type = null
+  }
+
+  stage 'Stop if more than X% of tests fail', {
+    description = ''
+    colorCode = '#289ce1'
+    completionType = 'auto'
+    condition = null
+    duration = null
+    parallelToPrevious = null
+    pipelineName = 'HDFC-2'
+    plannedEndDate = null
+    plannedStartDate = null
+    precondition = null
+    resourceName = null
+    waitForPlannedStartDate = '0'
+
+    gate 'PRE', {
+      condition = null
+      precondition = null
+      }
+
+    gate 'POST', {
+      condition = null
+      precondition = null
+      task 'Stop Custom ', {
+        description = ''
+        actionLabelText = null
+        advancedMode = '0'
+        afterLastRetry = null
+        allowOutOfOrderRun = '0'
+        allowSkip = null
+        alwaysRun = '0'
+        applicationName = null
+        applicationProjectName = null
+        applicationVersion = null
+        artifacts = null
+        artifactsRegEx = null
+        ciConfigurationName = null
+        ciControllerFolder = null
+        ciControllerName = null
+        ciEndpoint = null
+        ciJobBranchName = null
+        ciJobFolder = null
+        ciJobName = null
+        condition = null
+        customLabel = null
+        deployerExpression = null
+        deployerRunType = null
+        disableFailure = null
+        duration = null
+        emailConfigName = null
+        enabled = '1'
+        environmentName = null
+        environmentProjectName = null
+        environmentTemplateName = null
+        environmentTemplateProjectName = null
+        errorHandling = 'stopOnError'
+        gateCondition = '''// Example condition:if success rate is above 90%
+if (successRate >= 90) {
+     //start the success process in rate
+    console.log("Pipeline allowed to progress.");
+} else {
+    //stop process in success process in rate 
+    //example condition of the success rate in low success rate in pipeline 
+    console.log("Pipeline halted due to low success rate.");
+    
+}'''
+        gateType = 'POST'
+        groupName = null
+        groupRunType = null
+        insertRollingDeployManualStep = '0'
+        instruction = null
+        notificationEnabled = null
+        notificationTemplate = null
+        parallelToPrevious = null
+        plannedEndDate = null
+        plannedStartDate = null
+        precondition = null
+        requiredApprovalsCount = null
+        resourceName = ''
+        retryCount = null
+        retryInterval = null
+        retryType = null
+        rollingDeployEnabled = null
+        rollingDeployManualStepCondition = null
+        skippable = '0'
+        snapshotName = null
+        stageSummaryParameters = null
+        startingStage = null
+        subErrorHandling = null
+        subTaskType = null
+        subapplication = null
+        subpipeline = null
+        subpluginKey = null
+        subprocedure = null
+        subprocess = null
+        subproject = 'NS '
+        subrelease = null
+        subreleasePipeline = null
+        subreleasePipelineProject = null
+        subreleaseSuffix = null
+        subworkflowDefinition = null
+        subworkflowStartingState = null
+        taskProcessType = null
+        taskType = 'CONDITIONAL'
+        triggerType = null
+        useApproverAcl = '0'
+        waitForPlannedStartDate = '0'
+      }
+    }
+
+    task 'Build Custom in Data get in exit gate upto 90%', {
+      description = ''
+      actionLabelText = null
+      advancedMode = '0'
+      afterLastRetry = null
+      allowOutOfOrderRun = '0'
+      allowSkip = null
+      alwaysRun = '0'
+      applicationName = null
+      applicationProjectName = null
+      applicationVersion = null
+      artifacts = null
+      artifactsRegEx = null
+      ciConfigurationName = 'jenkins75'
+      ciControllerFolder = null
+      ciControllerName = null
+      ciEndpoint = null
+      ciJobBranchName = null
+      ciJobFolder = 'NS/'
+      ciJobName = 'SampleSCM'
+      condition = null
+      customLabel = null
+      deployerExpression = null
+      deployerRunType = null
+      disableFailure = null
+      duration = null
+      emailConfigName = null
+      enabled = '1'
+      environmentName = null
+      environmentProjectName = null
+      environmentTemplateName = null
+      environmentTemplateProjectName = null
+      errorHandling = 'stopOnError'
+      gateCondition = null
+      gateType = null
+      groupName = null
+      groupRunType = null
+      insertRollingDeployManualStep = '0'
+      instruction = null
+      notificationEnabled = null
+      notificationTemplate = null
+      parallelToPrevious = null
+      plannedEndDate = null
+      plannedStartDate = null
+      precondition = null
+      requiredApprovalsCount = null
+      resourceName = ''
+      retryCount = null
+      retryInterval = null
+      retryType = null
+      rollingDeployEnabled = null
+      rollingDeployManualStepCondition = null
+      skippable = '0'
+      snapshotName = null
+      stageSummaryParameters = null
+      startingStage = null
+      subErrorHandling = null
+      subTaskType = null
+      subapplication = null
+      subpipeline = null
+      subpluginKey = null
+      subprocedure = null
+      subprocess = null
+      subproject = 'NS '
+      subrelease = null
+      subreleasePipeline = null
+      subreleasePipelineProject = null
+      subreleaseSuffix = null
+      subworkflowDefinition = null
+      subworkflowStartingState = null
+      taskProcessType = null
+      taskType = 'CI_JOB'
+      triggerType = null
+      useApproverAcl = '0'
+      waitForPlannedStartDate = '0'
+    }
+  }
+
+  stage 'QA Testing ', {
+    description = ''
+    colorCode = '#ff7f0e'
+    completionType = 'auto'
+    condition = null
+    duration = null
+    parallelToPrevious = null
+    pipelineName = 'HDFC-2'
+    plannedEndDate = null
+    plannedStartDate = null
+    precondition = null
+    resourceName = null
+    waitForPlannedStartDate = '0'
+
+    gate 'PRE', {
+      condition = null
+      precondition = null
+      }
+
+    gate 'POST', {
+      condition = null
+      precondition = null
+      }
+
+    task 'Smoke Testing', {
+      description = ''
+      actionLabelText = null
+      actualParameter = [
+        'commandToRun': '''# #!/bin/bash
+# 
+# # .git/hooks/pre-commit
+# # executes smoke test prior to commit
+# 
+# # Provide the full path to the smoke test script if it\'s not in the same directory
+# # SMOKE_TEST_SCRIPT="./scripts/smoke-test-local"
+# 
+# # Check if the smoke test script exists
+# # if [ ! -e "$SMOKE_TEST_SCRIPT" ]; then
+# #     echo "Error: Smoke test script not found"
+# #     exit 1
+# # fi
+# 
+# # Check if the smoke test script is executable
+# # if ! [ -x "$SMOKE_TEST_SCRIPT" ]; then
+# #     echo "Error: Smoke test script is not executable"
+# #     exit 1
+# # fi
+# 
+# # Execute the smoke test
+# # "$SMOKE_TEST_SCRIPT"
+# 
+# # Check the exit status of the smoke test
+# # if [ $? -ne 0 ]; then
+# #     echo "Commit is rejected due to smoke test failure"
+# #     exit 1
+# # fi
+# 
+# # If everything is successful, allow the commit
+# # exit 0
+echo "Welcome"
+''',
+      ]
+      advancedMode = '0'
+      afterLastRetry = null
+      allowOutOfOrderRun = '0'
+      allowSkip = null
+      alwaysRun = '0'
+      applicationName = null
+      applicationProjectName = null
+      applicationVersion = null
+      artifacts = null
+      artifactsRegEx = null
+      ciConfigurationName = null
+      ciControllerFolder = null
+      ciControllerName = null
+      ciEndpoint = null
+      ciJobBranchName = null
+      ciJobFolder = null
+      ciJobName = null
+      condition = null
+      customLabel = null
+      deployerExpression = null
+      deployerRunType = null
+      disableFailure = null
+      duration = null
+      emailConfigName = null
+      enabled = '1'
+      environmentName = null
+      environmentProjectName = null
+      environmentTemplateName = null
+      environmentTemplateProjectName = null
+      errorHandling = 'stopOnError'
+      gateCondition = null
+      gateType = null
+      groupName = null
+      groupRunType = null
+      insertRollingDeployManualStep = '0'
+      instruction = null
+      notificationEnabled = null
+      notificationTemplate = null
+      parallelToPrevious = null
+      plannedEndDate = null
+      plannedStartDate = null
+      precondition = null
+      requiredApprovalsCount = null
+      resourceName = 'lfserver30'
+      retryCount = null
+      retryInterval = null
+      retryType = null
+      rollingDeployEnabled = null
+      rollingDeployManualStepCondition = null
+      skippable = '0'
+      snapshotName = null
+      stageSummaryParameters = null
+      startingStage = null
+      subErrorHandling = null
+      subTaskType = null
+      subapplication = null
+      subpipeline = null
+      subpluginKey = 'EC-Core'
+      subprocedure = 'RunCommand'
+      subprocess = null
+      subproject = null
+      subrelease = null
+      subreleasePipeline = null
+      subreleasePipelineProject = null
+      subreleaseSuffix = null
+      subworkflowDefinition = null
+      subworkflowStartingState = null
+      taskProcessType = null
+      taskType = 'COMMAND'
+      triggerType = null
+      useApproverAcl = '0'
+      waitForPlannedStartDate = '0'
+    }
+  }
+
+  stage 'Release Build ', {
+    description = ''
+    colorCode = '#c61010'
+    completionType = 'auto'
+    condition = null
+    duration = null
+    parallelToPrevious = null
+    pipelineName = 'HDFC-2'
+    plannedEndDate = null
+    plannedStartDate = null
+    precondition = null
+    resourceName = null
+    waitForPlannedStartDate = '0'
+
+    gate 'PRE', {
+      condition = null
+      precondition = null
+      }
+
+    gate 'POST', {
+      condition = null
+      precondition = null
+      }
+
+    task 'Trigger in Jenkins Job', {
+      description = ''
+      actionLabelText = null
+      advancedMode = '0'
+      afterLastRetry = null
+      allowOutOfOrderRun = '0'
+      allowSkip = null
+      alwaysRun = '0'
+      applicationName = null
+      applicationProjectName = null
+      applicationVersion = null
+      artifacts = null
+      artifactsRegEx = null
+      ciConfigurationName = 'jenkins75'
+      ciControllerFolder = null
+      ciControllerName = null
+      ciEndpoint = null
+      ciJobBranchName = null
+      ciJobFolder = 'vimanthan/'
+      ciJobName = 'VimFacimate'
+      condition = null
+      customLabel = null
+      deployerExpression = null
+      deployerRunType = null
+      disableFailure = null
+      duration = null
+      emailConfigName = null
+      enabled = '1'
+      environmentName = null
+      environmentProjectName = null
+      environmentTemplateName = null
+      environmentTemplateProjectName = null
+      errorHandling = 'stopOnError'
+      gateCondition = null
+      gateType = null
+      groupName = null
+      groupRunType = null
+      insertRollingDeployManualStep = '0'
+      instruction = null
+      notificationEnabled = null
+      notificationTemplate = null
+      parallelToPrevious = null
+      plannedEndDate = null
+      plannedStartDate = null
+      precondition = null
+      requiredApprovalsCount = null
+      resourceName = ''
+      retryCount = null
+      retryInterval = null
+      retryType = null
+      rollingDeployEnabled = null
+      rollingDeployManualStepCondition = null
+      skippable = '0'
+      snapshotName = null
+      stageSummaryParameters = null
+      startingStage = null
+      subErrorHandling = null
+      subTaskType = null
+      subapplication = null
+      subpipeline = null
+      subpluginKey = null
+      subprocedure = null
+      subprocess = null
+      subproject = 'NS '
+      subrelease = null
+      subreleasePipeline = null
+      subreleasePipelineProject = null
+      subreleaseSuffix = null
+      subworkflowDefinition = null
+      subworkflowStartingState = null
+      taskProcessType = null
+      taskType = 'CI_JOB'
+      triggerType = null
+      useApproverAcl = '0'
+      waitForPlannedStartDate = '0'
+    }
+
+    task 'Collecting Report Data ', {
+      description = ''
+      actionLabelText = null
+      actualParameter = [
+        'base_drilldown_url': '',
+        'config_name': '/projects/NS /pluginConfigurations/Jenkins -HDFC',
+        'copy_labels': '',
+        'debug': '0',
+        'field_mapping': '''# build
+"Enter-project-name-here":build.projectName,
+"Enter-release-name-here":build.releaseName,
+"Enter-release-project-name-here":build.releaseProjectName,
+build.launchedBy:build.launchedBy,
+build.number:build.buildNumber,
+build.duration:build.duration,
+build.url:build.sourceUrl,
+build.result:build.buildStatus,
+
+#quality
+"Enter-release-name-here":quality.releaseName,
+"Enter-release-project-name-here":quality.releaseProjectName,
+build.number:quality.buildNumber,
+
+#buildCommit
+build.number: buildCommit.buildNumber''',
+        'isMultibranchPipelineJob': '0',
+        'job_name': 'VimFacimate',
+        'metadata_property_path': '',
+        'old_builds_count': '',
+        'preview_mode': '',
+        'retrieve_test_results': '',
+        'scmBranch': '',
+        'startingCommitId': '',
+        'test_category': '',
+        'test_report_url': '/testReport',
+        'transform_script': '''sub transform {
+    my ($context, $payload) = @_;
+    # $payload->{build}->{buildCustomField} = \'build custom data\';
+    # $payload->{quality}->{qualityCustomField} = \'quality custom data\';
+    return $payload;
+}''',
+      ]
+      advancedMode = '0'
+      afterLastRetry = null
+      allowOutOfOrderRun = '0'
+      allowSkip = null
+      alwaysRun = '0'
+      applicationName = null
+      applicationProjectName = null
+      applicationVersion = null
+      artifacts = null
+      artifactsRegEx = null
+      ciConfigurationName = null
+      ciControllerFolder = null
+      ciControllerName = null
+      ciEndpoint = null
+      ciJobBranchName = null
+      ciJobFolder = null
+      ciJobName = null
+      condition = null
+      customLabel = null
+      deployerExpression = null
+      deployerRunType = null
+      disableFailure = null
+      duration = null
+      emailConfigName = null
+      enabled = '1'
+      environmentName = null
+      environmentProjectName = null
+      environmentTemplateName = null
+      environmentTemplateProjectName = null
+      errorHandling = 'stopOnError'
+      gateCondition = null
+      gateType = null
+      groupName = null
+      groupRunType = null
+      insertRollingDeployManualStep = '0'
+      instruction = null
+      notificationEnabled = null
+      notificationTemplate = null
+      parallelToPrevious = null
+      plannedEndDate = null
+      plannedStartDate = null
+      precondition = null
+      requiredApprovalsCount = null
+      resourceName = 'LFServer75'
+      retryCount = null
+      retryInterval = null
+      retryType = null
+      rollingDeployEnabled = null
+      rollingDeployManualStepCondition = null
+      skippable = '0'
+      snapshotName = null
+      stageSummaryParameters = null
+      startingStage = null
+      subErrorHandling = null
+      subTaskType = null
+      subapplication = null
+      subpipeline = null
+      subpluginKey = 'EC-Jenkins'
+      subprocedure = 'CollectReportingData'
+      subprocess = null
+      subproject = null
+      subrelease = null
+      subreleasePipeline = null
+      subreleasePipelineProject = null
+      subreleaseSuffix = null
+      subworkflowDefinition = null
+      subworkflowStartingState = null
+      taskProcessType = null
+      taskType = 'PLUGIN'
+      triggerType = null
+      useApproverAcl = '0'
+      waitForPlannedStartDate = '0'
+    }
+  }
+
+  // Custom properties
+
+  property 'ec_counters', {
+
+    // Custom properties
+    pipelineCounter = '9'
+  }
+}
