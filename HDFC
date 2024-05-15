@@ -1,4 +1,4 @@
-pipeline 'HDFC-2', {
+pipeline 'DEMOHDFC', {
   description = ''
   disableMultipleActiveRuns = '0'
   disableRestart = '0'
@@ -28,7 +28,7 @@ pipeline 'HDFC-2', {
     condition = null
     duration = null
     parallelToPrevious = null
-    pipelineName = 'HDFC-2'
+    pipelineName = 'DEMOHDFC'
     plannedEndDate = null
     plannedStartDate = null
     precondition = null
