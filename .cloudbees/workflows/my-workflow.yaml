@@ -19,12 +19,14 @@ jobs:
         run: |
           git config --global --add safe.directory /cloudbees/workspace
          
+      - name: Checkout Code
+        uses: cloudbees-io/checkout@v1
 
       - name: Build
         uses: docker://alpine/git:latest
         image: adoptopenjdk:17-jdk-hotspot
         run: |
-           java -version
+           
            chmod +x ./gradlew
            ./gradlew build
     needs: Checkout
