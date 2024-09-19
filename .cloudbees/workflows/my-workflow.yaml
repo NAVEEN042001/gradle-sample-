@@ -10,23 +10,24 @@ jobs:
     steps:
       - name: Checkout Code
         uses: cloudbees-io/checkout@v1
-
+        image: alpine/git:latest
+        script: |
+          git config --global --add safe.directory /cloudbees/workspace
+        
   Build:
     steps:
-      - uses: docker://alpine/git:latest
+      - name: Set up Java
+        uses: docker://alpine/git:latest
         run: |
           git config --global --add safe.directory /cloudbees/workspace
-          
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'  # Use the Java version compatible with your project
+        image: adoptopenjdk:17-jdk-hotspot
+        script: |
+          java -version
 
       - name: Build
-        uses: actions/setup-java@v3
-        run: |
+        uses: docker://alpine/git:latest
+        image: adoptopenjdk:17-jdk-hotspot
+        script: |
           chmod +x ./gradlew
           ./gradlew build
     needs: Checkout
-
