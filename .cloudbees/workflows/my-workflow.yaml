@@ -4,29 +4,27 @@ name: My workflow
 on:
   push:
     branches:
-      - "master"
+      - master
 jobs:
   Checkout:
     steps:
       - name: Checkout Code
         uses: cloudbees-io/checkout@v1
-       
-        
   Build:
     steps:
-      - name: Set up Java
-        uses: docker://alpine/git:latest
+      - uses: docker://alpine/git:latest
+        name: Set up Java
         run: |
           git config --global --add safe.directory /cloudbees/workspace
-         
-      - name: Checkout Code
-        uses: cloudbees-io/checkout@v1
-
-      - name: Build
-        uses: docker://maven:3-eclipse-temurin-17
+      - uses: cloudbees-io/checkout@v1
+        name: Checkout Code
+      - uses: docker://maven:3-eclipse-temurin-17
+        name: Build
         run: |
-           
-           chmod +x ./gradlew
-           ./gradlew build
+          
+          chmod +x ./gradlew
+          ./gradlew build
+      - uses: docker/login-action@v1
+        name: Static Analaysis
+        kind: scan
     needs: Checkout
-    
