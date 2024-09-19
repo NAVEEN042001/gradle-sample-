@@ -10,9 +10,7 @@ jobs:
     steps:
       - name: Checkout Code
         uses: cloudbees-io/checkout@v1
-        image: alpine/git:latest
-        script: |
-          git config --global --add safe.directory /cloudbees/workspace
+       
         
   Build:
     steps:
@@ -20,14 +18,13 @@ jobs:
         uses: docker://alpine/git:latest
         run: |
           git config --global --add safe.directory /cloudbees/workspace
-        image: adoptopenjdk:17-jdk-hotspot
-        script: |
-          java -version
+         
 
       - name: Build
         uses: docker://alpine/git:latest
         image: adoptopenjdk:17-jdk-hotspot
-        script: |
-          chmod +x ./gradlew
-          ./gradlew build
+        run: |
+           java -version
+           chmod +x ./gradlew
+           ./gradlew build
     needs: Checkout
