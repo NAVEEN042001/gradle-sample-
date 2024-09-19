@@ -4,17 +4,25 @@ name: My workflow
 on:
   push:
     branches:
-      - "**"
+      - "main"
 jobs:
   Checkout:
     steps:
-      - name: checkout
+      - name: Checkout Code
         uses: cloudbees-io/checkout@v1
+
   Build:
     steps:
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'  # Use the Java version compatible with your project
+
       - name: Build
-        uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
+        uses: actions/setup-java@v3
         run: |
+          chmod +x ./gradlew
           ./gradlew build
     needs: Checkout
+
