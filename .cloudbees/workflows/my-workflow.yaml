@@ -13,6 +13,10 @@ jobs:
 
   Build:
     steps:
+      - uses: docker://alpine/git:latest
+        run: |
+          git config --global --add safe.directory /cloudbees/workspace
+          
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
