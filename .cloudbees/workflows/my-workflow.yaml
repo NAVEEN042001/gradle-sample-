@@ -23,8 +23,7 @@ jobs:
         uses: cloudbees-io/checkout@v1
 
       - name: Build
-        uses: docker://alpine/git:latest
-        image: adoptopenjdk:17-jdk-hotspot
+        uses: docker://maven:3-eclipse-temurin-17
         run: |
            
            chmod +x ./gradlew
