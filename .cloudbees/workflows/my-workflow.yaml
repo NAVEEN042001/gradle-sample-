@@ -4,7 +4,7 @@ name: My workflow
 on:
   push:
     branches:
-      - "main"
+      - "master"
 jobs:
   Checkout:
     steps:
